@@ -1,0 +1,87 @@
+﻿@model MvcMovieApp.Models.Movie
+
+@{
+    if(!WebSecurity.IsAuthenticated){
+        Response.Redirect("~/Account/Login?returnUrl=" + Request.Url.LocalPath);
+    }
+    Page.Title = "Movies";
+
+}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset= "utf-8" />
+        <title>Movies</title>
+    </head>
+    <body>
+    <p>You can only see this information if you've logged into the site.</p>
+    </body>
+</html>
+
+@{
+    if(!WebSecurity.IsAuthenticated){
+        Response.Redirect("~/Account/Login?returnUrl=" + Request.Url.LocalPath);
+    }
+    Layout = "~/Shared/_Layout.cshtml";
+    Page.Title = "Movies Information";
+
+}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset= "utf-8" />
+        <title>Movie Information</title>
+    </head>
+    <body>
+    <p>You can only see this information if you've logged into the site.</p>
+    </body>
+</html>
+
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Movie</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Title)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Title)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ReleaseDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ReleaseDate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Genre)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Genre)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Price)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Price)
+    </div>
+    <div class="display-label">
+        @Html.LabelFor(model => model.Rating)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Rating)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
